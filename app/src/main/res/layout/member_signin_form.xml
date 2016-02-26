@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/formIdLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디"
+            android:id="@+id/textViewId"
+            android:layout_alignBaseline="@+id/formTextId"
+            android:layout_alignRight="@+id/formTextId"
+            android:textSize="18dp"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/formTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:hint="아이디"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/formTextPwd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/formIdLine"
+        android:hint="비밀번호"
+        android:singleLine="true"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/formTextPwd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/formTextPwd1"
+        android:hint="비밀번호"
+        android:singleLine="true"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/formTextAdrr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/formTextPwd2"
+        android:hint="주소"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/formTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/formTextAdrr"
+        android:hint="이메일"
+        android:singleLine="true" />
+
+</RelativeLayout>
