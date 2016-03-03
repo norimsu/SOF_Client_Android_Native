@@ -74,11 +74,11 @@ public class OnClickListenerSignIn implements View.OnClickListener {
 
                                     //Log.e("test", formTextEmail);
                                     try {
-                                        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                                        ArrayList<NameValuePair> nameValuePairs1 = new ArrayList<NameValuePair>();
 
-                                        nameValuePairs.add(new BasicNameValuePair("mname", formTextId));
-                                        nameValuePairs.add(new BasicNameValuePair("mpwd", formTextPwd1));
-                                        nameValuePairs.add(new BasicNameValuePair("mloc", formTextAddr));
+                                        nameValuePairs1.add(new BasicNameValuePair("mname", formTextId));
+                                        nameValuePairs1.add(new BasicNameValuePair("mpwd", formTextPwd1));
+                                        nameValuePairs1.add(new BasicNameValuePair("mloc", formTextAddr));
 
                                         HttpClient client = new DefaultHttpClient(); // 보낼 객체 생성
                                         HttpParams params = client.getParams();
@@ -87,13 +87,14 @@ public class OnClickListenerSignIn implements View.OnClickListener {
 
                                         //EditText memberUrl= (EditText) formElementsView.findViewById(R.string.member_url);
                                         String memberUrl = "http://10.131.158.30:8080/androidserver/join.do";
+
                                         Log.e("test", memberUrl);
 
-                                        HttpPost httpPost = new HttpPost(memberUrl);
-                                        UrlEncodedFormEntity entityRequest = new UrlEncodedFormEntity(nameValuePairs, "UTF-8");
-                                        httpPost.setEntity(entityRequest);
+                                        HttpPost httpPost1 = new HttpPost(memberUrl);
+                                        UrlEncodedFormEntity entityRequest1 = new UrlEncodedFormEntity(nameValuePairs1, "UTF-8");
+                                        httpPost1.setEntity(entityRequest1);
 
-                                        HttpResponse responsePost = client.execute(httpPost);
+                                        HttpResponse responsePost = client.execute(httpPost1);
 
                                         /////////////////////////////////////////////////////////////////////////////////////////////////
 

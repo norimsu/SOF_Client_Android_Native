@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 // json lib
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -113,8 +114,6 @@ public class MainActivity extends ActionBarActivity {
             String response_result;
             // 서버의 성공 실패 여부를 response_result 에 저장
             try {
-
-
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
                 TextView input_id = (TextView)findViewById(R.id.input_id);
@@ -129,25 +128,33 @@ public class MainActivity extends ActionBarActivity {
 
                 HttpClient client = new DefaultHttpClient(); // 보낼 객체 생성
                 HttpParams params = client.getParams();
-                HttpConnectionParams.setConnectionTimeout(params, 5000);
-                HttpConnectionParams.setSoTimeout(params, 5000);
+                HttpConnectionParams.setConnectionTimeout(params, 1000);
+                HttpConnectionParams.setSoTimeout(params, 1000);
 
                 HttpPost httpPost = new HttpPost(urlStr);
                 UrlEncodedFormEntity entityRequest = new UrlEncodedFormEntity(nameValuePairs, "UTF-8");
                 httpPost.setEntity(entityRequest);
 
-                HttpResponse responsePost = client.execute(httpPost);
+                HttpResponse response1 = client.execute(httpPost);
+
+
+
 
                 //
 
                 URL url = new URL(urlStr);
+                Log.e("test000", urlStr);
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 
-                Log.e("test000","test000");
+
 
                 int responseCode = conn.getResponseCode(); // Server에 연결
-                if(responseCode == HttpURLConnection.HTTP_OK){
-                    Log.e("test00","test00");
+                String codeString = "response code: " + responseCode;
+                Log.e("test0000",codeString);
+                // responseCode 가 200이면
+                if(responseCode == HttpURLConnection.HTTP_OK)
+                {
+                    Log.e("test00000","test00000");
                     InputStream in = conn.getInputStream();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     byte[] byteBuffer = new byte[1024];
@@ -161,6 +168,7 @@ public class MainActivity extends ActionBarActivity {
 
                     String response = new String(byteData);
                     Log.e("test3",response);
+
 
                     JSONObject responseJSON = new JSONObject(response);
                     Log.e("test4",responseJSON.toString());
