@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -7,13 +7,12 @@
     tools:context="com.example.cte1.stack_overflow.SubActivity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Welcome Stack Overflow"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp" />
-</RelativeLayout>
+    <ListView
+        android:id="@+id/listview"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:divider="#ffcc22"
+        android:dividerHeight="1.5dp"
+        android:choiceMode="singleChoice" />
+
+</LinearLayout>

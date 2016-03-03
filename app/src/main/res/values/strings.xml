@@ -1,15 +1,33 @@
 <resources>
     <string name="app_name">Stack_Overflow</string>
 
+    <string name="string_at">$</string>
+
     <string name="action_settings">설정</string>
     <string name="action_signin">회원가입</string>
     <string name="action_login">로그인</string>
     <string name="action_logout">로그아웃</string>
     <string name="action_refresh">새로고침</string>
 
-    <string name="toast_loading">접속하는 중입니다.</string>
 
-    <string name="default_url">http://10.131.158.24:8080/androidserver/login.do</string>
+    <string name="string_id">아이디</string>
+    <string name="string_pwd">비밀번호</string>
+    <string name="string_pwd2">비민번호 확인</string>
+    <string name="string_addr">주소</string>
+    <string name="string_name">이름</string>
+    <string name="string_email">E-mail</string>
+
+
+
+    <string name="toast_loading">접속하는 중입니다.</string>
+    <string name="toast_fail">접속 오류!!</string>
+
+
+    <string name="default_url">http://10.131.158.132:8080/androidserver/login.do</string>
+
+
+
+    <string name="title_activity_sub">SubActivity</string>
 
 
 </resources>

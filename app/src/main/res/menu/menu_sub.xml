@@ -6,17 +6,20 @@
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         android:title="@string/action_refresh"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:icon="@drawable/abc_btn_rating_star_off_mtrl_alpha"/>
 
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="@string/action_logout"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:icon="@drawable/abc_ic_clear_mtrl_alpha"/>
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:icon="@drawable/abc_ic_menu_cut_mtrl_alpha"/>
 </menu>

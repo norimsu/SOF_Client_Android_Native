@@ -50,9 +50,9 @@ public class MainActivity extends ActionBarActivity {
         requestBtn1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
 
-                //Toast toast1 = Toast.makeText(this, R.string.toast_loading, Toast.LENGTH_SHORT);
-                //toast1.setGravity(Gravity.CENTER,0,0);
-                //toast1.show();
+                Toast toastLogin = Toast.makeText(getApplicationContext(), R.string.toast_loading, Toast.LENGTH_LONG);
+                toastLogin.setGravity(Gravity.CENTER,0,0);
+                toastLogin.show();
 
                 // txtMsg에 Loading set
                 TextView txtMsg = (TextView)findViewById(R.id.txtMsg);
@@ -65,6 +65,13 @@ public class MainActivity extends ActionBarActivity {
                 // 통신 thread start
                 ConnectThread thread = new ConnectThread(urlStr);
                 thread.start();
+
+                //toastLogin.cancel();
+
+                //Toast toastFail = Toast.makeText(getApplicationContext(), R.string.toast_fail, Toast.LENGTH_LONG);
+                //toastFail.setGravity(Gravity.CENTER, 0, 0);
+                //toastFail.show();
+
             }
         });
         //Button requestBtn2 = (Button)findViewById(R.id.requestBtn2);
@@ -117,7 +124,6 @@ public class MainActivity extends ActionBarActivity {
                 json.put("id", input_id.getText().toString());
                 json.put("pwd", input_pwd.getText().toString());
 
-
                 nameValuePairs.add(new BasicNameValuePair("responsePost", json.toString()));
 
                 HttpClient client = new DefaultHttpClient(); // 보낼 객체 생성
@@ -154,6 +160,8 @@ public class MainActivity extends ActionBarActivity {
 
                     String result = (String)responseJSON.get("status");
 
+                    Log.e("test1", result);
+
                     // 중요 !! Activity 이동하는 부분!!
                     if(result.toString().equals("success")){
                         changeActivity();
@@ -175,6 +183,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(this, SubActivity.class);
         startActivity(intent);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
