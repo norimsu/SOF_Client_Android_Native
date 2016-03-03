@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.lang.annotation.ElementType;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,106 +38,119 @@ public class OnClickListenerSignIn implements View.OnClickListener {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View formElementsView = inflater.inflate(R.layout.member_signin_form, null, false);
 
-        final EditText formTextId = (EditText) formElementsView.findViewById(R.id.formTextId);
-        final EditText formTextPwd1 = (EditText) formElementsView.findViewById(R.id.formTextPwd1);
-        final EditText formTextPwd2 = (EditText) formElementsView.findViewById(R.id.formTextPwd2);
-        final EditText formTextAddr = (EditText) formElementsView.findViewById(R.id.formTextAddr);
-        final EditText formTextEmail1 = (EditText) formElementsView.findViewById(R.id.formTextEmail1);
-        final EditText formTextEmail2 = (EditText) formElementsView.findViewById(R.id.formTextEmail2);
+        final EditText editTextId = (EditText) formElementsView.findViewById(R.id.formTextId);
+        final EditText editTextPwd1 = (EditText) formElementsView.findViewById(R.id.formTextPwd1);
+        final EditText editTextPwd2 = (EditText) formElementsView.findViewById(R.id.formTextPwd2);
+        final EditText editTextAddr = (EditText) formElementsView.findViewById(R.id.formTextAddr);
+        //final EditText editTextEmail1 = (EditText) formElementsView.findViewById(R.id.formTextEmail1);
+        //final EditText editTextEmail2 = (EditText) formElementsView.findViewById(R.id.formTextEmail2);
 
         /*
         중복 아이디 여부 (통신 필요)
         패스워드 확인
         */
-        Log.e("test", formTextPwd1.toString());
-        Log.e("test", formTextPwd2.toString());
-
         new AlertDialog.Builder(context)
                 .setView(formElementsView)
                 .setTitle("회원가입")
                 .setPositiveButton("완료",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                        // 가입
-                            if (formTextPwd1.toString().equals(formTextPwd2.toString())) {
-                                String formTextEmail = formTextEmail1.getText().toString() + "@" + formTextEmail2.getText().toString();
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                                Log.e("test", formTextEmail);
 
-                                try {
-                                    ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                                String formTextId = editTextId.getText().toString();
+                                String formTextPwd1 = editTextPwd1.getText().toString();
+                                String formTextPwd2 = editTextPwd2.getText().toString();
+                                String formTextAddr = editTextAddr.getText().toString();
+                                //String formTextEmail1 = editTextEmail1.getText().toString();
+                                //String formTextEmail2 = editTextEmail2.getText().toString();
 
-                                    nameValuePairs.add(new BasicNameValuePair("mname", formTextId.getText().toString()));
-                                    nameValuePairs.add(new BasicNameValuePair("mpwd", formTextPwd1.getText().toString()));
-                                    nameValuePairs.add(new BasicNameValuePair("mloc", formTextAddr.getText().toString()));
+                                Log.e("test0", "test0");
 
-                                    HttpClient client = new DefaultHttpClient(); // 보낼 객체 생성
-                                    HttpParams params = client.getParams();
-                                    HttpConnectionParams.setConnectionTimeout(params, 5000);
-                                    HttpConnectionParams.setSoTimeout(params, 5000);
+                                Log.e("test1", formTextPwd1);
+                                Log.e("test2", formTextPwd2);
+                                // 가입
+                                if (formTextPwd1.equals(formTextPwd2)) {
+                                    //String formTextEmail = formTextEmail1 + "@" + formTextEmail2;
 
-                                    //EditText memberUrl= (EditText) formElementsView.findViewById(R.string.member_url);
-                                    String memberUrl = "http://10.131.158.30:8080/androidserver/join.do";
-                                    Log.e("test", memberUrl);
+                                    //Log.e("test", formTextEmail);
+                                    try {
+                                        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-                                    HttpPost httpPost = new HttpPost(memberUrl);
-                                    UrlEncodedFormEntity entityRequest = new UrlEncodedFormEntity(nameValuePairs, "UTF-8");
-                                    httpPost.setEntity(entityRequest);
+                                        nameValuePairs.add(new BasicNameValuePair("mname", formTextId));
+                                        nameValuePairs.add(new BasicNameValuePair("mpwd", formTextPwd1));
+                                        nameValuePairs.add(new BasicNameValuePair("mloc", formTextAddr));
 
-                                    HttpResponse responsePost = client.execute(httpPost);
+                                        HttpClient client = new DefaultHttpClient(); // 보낼 객체 생성
+                                        HttpParams params = client.getParams();
+                                        HttpConnectionParams.setConnectionTimeout(params, 5000);
+                                        HttpConnectionParams.setSoTimeout(params, 5000);
 
-                                    /////////////////////////////////////////////////////////////////////////////////////////////////
+                                        //EditText memberUrl= (EditText) formElementsView.findViewById(R.string.member_url);
+                                        String memberUrl = "http://10.131.158.30:8080/androidserver/join.do";
+                                        Log.e("test", memberUrl);
 
-                                    //case :join
-                                    // status // success // disaccord
+                                        HttpPost httpPost = new HttpPost(memberUrl);
+                                        UrlEncodedFormEntity entityRequest = new UrlEncodedFormEntity(nameValuePairs, "UTF-8");
+                                        httpPost.setEntity(entityRequest);
 
-                                /*
+                                        HttpResponse responsePost = client.execute(httpPost);
 
-                                URL url = new URL(memberUrl);
-                                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                                        /////////////////////////////////////////////////////////////////////////////////////////////////
 
-                                int responseCode = conn.getResponseCode(); // Server에 연결
-                                if(responseCode == HttpURLConnection.HTTP_OK){
-                                    InputStream in = conn.getInputStream();
-                                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                                    byte[] byteBuffer = new byte[1024];
-                                    byte[] byteData = null;
+                                        //case :join
+                                        // status // success // disaccord
 
-                                    int nLength = 0;
-                                    while((nLength = in.read(byteBuffer, 0, byteBuffer.length)) != -1){
-                                        baos.write(byteBuffer, 0, nLength);
+
+                                        URL url = new URL(memberUrl);
+                                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                                        int responseCode = conn.getResponseCode(); // Server에 연결
+                                        if (responseCode == HttpURLConnection.HTTP_OK) {
+                                            InputStream in = conn.getInputStream();
+                                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                            byte[] byteBuffer = new byte[1024];
+                                            byte[] byteData = null;
+
+                                            int nLength = 0;
+                                            while ((nLength = in.read(byteBuffer, 0, byteBuffer.length)) != -1) {
+                                                baos.write(byteBuffer, 0, nLength);
+                                            }
+                                            byteData = baos.toByteArray();
+
+                                            String response = new String(byteData);
+                                            JSONObject responseJSON = new JSONObject(response);
+
+                                            //String result = (String)responseJSON.get("status");
+
+                                            //Log.e("test1", result);
+
+
+                                            // 중요 !! Activity 이동하는 부분!!
+                                            //if(result.toString().equals("success")){
+
+                                            // }
+
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
                                     }
-                                    byteData = baos.toByteArray();
-
-                                    String response = new String(byteData);
-                                    JSONObject responseJSON = new JSONObject(response);
-
-                                    //String result = (String)responseJSON.get("status");
-
-                                    //Log.e("test1", result);
-
-
-                                    // 중요 !! Activity 이동하는 부분!!
-                                    //if(result.toString().equals("success")){
-
-                                    // }
-
+                                } else{
+                                    Toast toastPwd = Toast.makeText(context, "비밀번호 가 다릅니다!", Toast.LENGTH_SHORT);
+                                    toastPwd.setGravity(Gravity.CENTER, 0, 0);
+                                    toastPwd.show();
                                 }
-
-                            */
-                                    dialog.cancel();
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                    dialog.cancel();
-                                }//확인
-
-                            } else {
-                                Toast toastPwd = Toast.makeText(context, "비밀번호 오류!", Toast.LENGTH_SHORT);
-                                toastPwd.setGravity(Gravity.CENTER, 0, 0);
-                                toastPwd.show();
+                                dialog.cancel();
                             }
+
+                    }
+
+                            ).
+
+                            show();
                         }
-             }).show();
-        }
     }
+
+
+
+
+

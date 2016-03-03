@@ -122,50 +122,53 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/formEmailLine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/formAddrLine"
-        >
-
-        <TextView
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:text="E-Mail"
-            android:id="@+id/textViewEmail"
-            android:layout_alignBaseline="@+id/formTextEmail1"
-            android:layout_alignRight="@+id/formTextEmail1"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:id="@+id/formTextEmail1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:hint="Email"
-            android:singleLine="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$"
-            android:id="@+id/textViewAt"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:id="@+id/formTextEmail2"
+    <!--
+        <LinearLayout
+            android:id="@+id/formEmailLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:hint="Domain"
-            android:singleLine="true" />
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/formAddrLine"
+            >
+
+            <TextView
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="E-Mail"
+                android:id="@+id/textViewEmail"
+                android:layout_alignBaseline="@+id/formTextEmail1"
+                android:layout_alignRight="@+id/formTextEmail1"
+                android:textSize="18dp"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/formTextEmail1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:hint="Email"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:id="@+id/textViewAt"
+                android:textSize="18dp"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/formTextEmail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:hint="Domain"
+                android:singleLine="true" />
+
 
     </LinearLayout>
+    -->
 
 
 </RelativeLayout>

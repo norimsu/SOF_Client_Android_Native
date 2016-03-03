@@ -1,4 +1,5 @@
 package com.example.cte1.stack_overflow;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -22,10 +23,10 @@ public class SubActivity extends ActionBarActivity {
 
         Log.e("test", "사진 넣기 전");
 
-        ListViewItem Han = new ListViewItem(R.drawable.han, "한민지 입니다");
-        ListViewItem Lee = new ListViewItem(R.drawable.lee, "이상현 입니다");
-        ListViewItem An = new ListViewItem(R.drawable.an, "안병래 입니다");
-        ListViewItem Ko = new ListViewItem(R.drawable.ko, "고민수 입니다");
+        ListViewItem Han = new ListViewItem(R.drawable.han, "Hybrid 앱 보안관련 이슈 공유");
+        ListViewItem Lee = new ListViewItem(R.drawable.lee, "NetBeans에서 Cordova연동");
+        ListViewItem An = new ListViewItem(R.drawable.an, "Spring MVC패턴 개념정리");
+        ListViewItem Ko = new ListViewItem(R.drawable.ko, "Hybrid앱에서 자동로그인 구현하기");
 
         Log.e("test", "사진 넣은 후");
 
@@ -34,7 +35,7 @@ public class SubActivity extends ActionBarActivity {
         data.add(An);
         data.add(Ko);
 
-        ListviewAdapter adapter=new ListviewAdapter(this, R.layout.activity_sub, data);
+        ListviewAdapter adapter=new ListviewAdapter(this, R.layout.item, data);
         listView.setAdapter(adapter);
 
         Log.e("text", "adapter set");
@@ -59,26 +60,15 @@ public class SubActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_logout){
+            changeActivity();
+        }
 
         return super.onOptionsItemSelected(item);
     }
-}
 
-class ListViewItem {
-
-    private int icon;
-    private String name;
-
-    public int getIcon(){
-        return icon;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public ListViewItem(int icon, String name){
-        this.icon = icon;
-        this.name = name;
+    public void changeActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

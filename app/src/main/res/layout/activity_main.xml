@@ -10,84 +10,99 @@
     tools:context=".MainActivity"
     >
 
-    <EditText
-        android:id="@+id/input_url"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="서버 주소 입력"
-        android:textSize="13dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/default_url"
-        android:singleLine="true">
-    </EditText>
-
-    <EditText
-        android:id="@+id/input_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="아이디 입력"
-        android:textSize="18dp"
-        android:layout_below="@+id/input_url"
-        android:singleLine="true">
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/input_pwd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="비밀번호 입력"
-        android:textSize="18dp"
-        android:layout_below="@+id/input_id"
-        android:singleLine="true"
-        android:inputType="textPassword">
-    </EditText>
 
     <LinearLayout
-        android:id="@+id/requestBtnLine"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/input_pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+
         >
 
-        <Button
-            android:id="@+id/requestBtn1"
-            android:layout_width="100dp"
+        <EditText
+            android:id="@+id/input_url"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="로그인"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true">
-        </Button>
+            android:hint="서버 주소 입력"
+            android:textSize="13dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/default_url"
+            android:singleLine="true">
+        </EditText>
 
-        <Button
-            android:id="@+id/requestBtn2"
-            android:layout_width="100dp"
+        <EditText
+            android:id="@+id/input_id"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="회원가입"
+            android:hint="아이디 입력"
             android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true">
-        </Button>
+            android:layout_below="@+id/input_url"
+            android:singleLine="true">
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/input_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호 입력"
+            android:textSize="18dp"
+            android:layout_below="@+id/input_id"
+            android:singleLine="true"
+            android:inputType="textPassword">
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/requestBtnLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/input_pwd"
+            >
+
+            <Button
+                android:id="@+id/requestBtn1"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="로그인"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true">
+            </Button>
+
+            <Button
+                android:id="@+id/requestBtn2"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="회원가입"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true">
+            </Button>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_below="@+id/requestBtnLine">
+            <TextView
+                android:id="@+id/txtMsg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffe100"
+                android:textColor="#0000ff"
+                android:textSize="20dp">
+            </TextView>
+        </ScrollView>
+
 
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_below="@+id/requestBtnLine">
-        <TextView
-            android:id="@+id/txtMsg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffe100"
-            android:textColor="#0000ff"
-            android:textSize="20dp">
-        </TextView>
-    </ScrollView>
 
 </RelativeLayout>

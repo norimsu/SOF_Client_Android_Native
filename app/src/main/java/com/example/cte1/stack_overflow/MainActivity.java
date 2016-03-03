@@ -30,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 
@@ -50,9 +51,11 @@ public class MainActivity extends ActionBarActivity {
         requestBtn1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
 
-                Toast toastLogin = Toast.makeText(getApplicationContext(), R.string.toast_loading, Toast.LENGTH_LONG);
-                toastLogin.setGravity(Gravity.CENTER,0,0);
-                toastLogin.show();
+
+
+                Toast toastLoading = Toast.makeText(getApplicationContext(), R.string.toast_loading, Toast.LENGTH_SHORT);
+                toastLoading.setGravity(Gravity.CENTER,0,0);
+                toastLoading.show();
 
                 // txtMsg에 Loading set
                 TextView txtMsg = (TextView)findViewById(R.id.txtMsg);
@@ -79,11 +82,7 @@ public class MainActivity extends ActionBarActivity {
 
         Button buttonCreateLocation = (Button) findViewById(R.id.requestBtn2);
         buttonCreateLocation.setOnClickListener(new OnClickListenerSignIn());
-
-
     }
-
-
 
     class ConnectThread extends Thread {
 
@@ -111,20 +110,22 @@ public class MainActivity extends ActionBarActivity {
         }
 
         private String request(String urlStr) {
+            String response_result;
             // 서버의 성공 실패 여부를 response_result 에 저장
-
             try {
+
 
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
                 TextView input_id = (TextView)findViewById(R.id.input_id);
                 TextView input_pwd = (TextView)findViewById(R.id.input_pwd);
 
-                JSONObject json = new JSONObject();
-                json.put("id", input_id.getText().toString());
-                json.put("pwd", input_pwd.getText().toString());
+                //JSONObject json = new JSONObject();
+                //json.put("id", input_id.getText().toString());
+                //json.put("pwd", input_pwd.getText().toString());
 
-                nameValuePairs.add(new BasicNameValuePair("responsePost", json.toString()));
+                nameValuePairs.add(new BasicNameValuePair("mname", input_id.getText().toString()));
+                nameValuePairs.add(new BasicNameValuePair("mpwd", input_pwd.getText().toString()));
 
                 HttpClient client = new DefaultHttpClient(); // 보낼 객체 생성
                 HttpParams params = client.getParams();
@@ -137,13 +138,16 @@ public class MainActivity extends ActionBarActivity {
 
                 HttpResponse responsePost = client.execute(httpPost);
 
-                /////////////////////////////////////////////////////////////////////////////////////////////////
+                //
 
                 URL url = new URL(urlStr);
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 
+                Log.e("test000","test000");
+
                 int responseCode = conn.getResponseCode(); // Server에 연결
                 if(responseCode == HttpURLConnection.HTTP_OK){
+                    Log.e("test00","test00");
                     InputStream in = conn.getInputStream();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     byte[] byteBuffer = new byte[1024];
@@ -156,26 +160,63 @@ public class MainActivity extends ActionBarActivity {
                     byteData = baos.toByteArray();
 
                     String response = new String(byteData);
+                    Log.e("test3",response);
+
                     JSONObject responseJSON = new JSONObject(response);
+                    Log.e("test4",responseJSON.toString());
 
+                    String result_case = (String)responseJSON.get("caseby");
                     String result = (String)responseJSON.get("status");
+                    Log.e("test1", result_case);
+                    Log.e("test2", result);
 
-                    Log.e("test1", result);
-
-                    // 중요 !! Activity 이동하는 부분!!
-                    if(result.toString().equals("success")){
-                        changeActivity();
+                    // case :login
+                    // status // success // disaccord
+                    if(result_case.toString().equals("login"))
+                    {
+                        if(result.toString().equals("success")){
+                            Toast toastLogin = Toast.makeText(getApplicationContext(), R.string.toast_login, Toast.LENGTH_LONG);
+                            toastLogin.setGravity(Gravity.CENTER,0,0);
+                            toastLogin.show();
+                            // 중요 !! Activity 이동하는 부분!!
+                            changeActivity();
+                        }
+                        else if(result.toString().equals("disaccord"))
+                        {
+                            //
+                            Toast toast1 = Toast.makeText(getApplicationContext(), R.string.toast_disaccord, Toast.LENGTH_LONG);
+                            toast1.setGravity(Gravity.CENTER, 0, 0);
+                            toast1.show();
+                        }
+                        else
+                        {
+                            //
+                            Toast toast2 = Toast.makeText(getApplicationContext(), R.string.toast_xxxxx, Toast.LENGTH_LONG);
+                            toast2.setGravity(Gravity.CENTER,0,0);
+                            toast2.show();
+                        }
                     }
+                    else
+                    {
+                        //
+                        Toast toast3 = Toast.makeText(getApplicationContext(), R.string.toast_xxxxx, Toast.LENGTH_LONG);
+                        toast3.setGravity(Gravity.CENTER,0,0);
+                        toast3.show();
+                    }
+                }
+                else {
+                    Toast toast4 = Toast.makeText(getApplicationContext(),"받지 못함", Toast.LENGTH_LONG);
+                    toast4.setGravity(Gravity.CENTER,0,0);
+                    toast4.show();
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            String response_result = "Check your ID/PWD";
+            response_result = "Check your ID/PWD";
 
             return response_result;
-
         }
     }
 

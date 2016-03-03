@@ -22,4 +22,11 @@
         android:title="@string/action_settings"
         app:showAsAction="never"
         android:icon="@drawable/abc_ic_menu_cut_mtrl_alpha"/>
+
+    <item
+        android:id="@+id/action_new"
+        android:orderInCategory="100"
+        android:title="글쓰기"
+        app:showAsAction="withText|always"
+        android:icon="@drawable/ic_add"/>
 </menu>

@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by cte1 on 2016-03-02.
- */
 
 public class ListviewAdapter extends BaseAdapter {
 
