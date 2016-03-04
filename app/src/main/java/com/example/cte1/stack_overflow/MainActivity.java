@@ -25,9 +25,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.json.JSONException;
 import org.json.JSONObject;
 // 통신 lib
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -73,36 +75,39 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-
-        final SignInDialog signInDialog = new SignInDialog(MainActivity.this);
-        signInDialog.setTitle("회원가입");
-
-        // 회원가입 확인
-        signInDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface arg0) {
-
-            }
-        });
-
-        // 회원가입 취소
-        signInDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface arg0) {
-                //Toast toastCancel;
-                //toastCancel = new Toast.makeText(getApplicationContext(), "회원가입을 취소했습니다.", Toast.LENGTH_SHORT);
-                //toastCancel.setGravity(Gravity.CENTER, 0, 0);
-                //toastCancel.show();
-            }
-        });
-        // 회원가입 버튼 동작
         Button buttonCreateLocation = (Button) findViewById(R.id.requestBtn2);
-        buttonCreateLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View arg0) {
-                signInDialog.show();
-            }
-        });
+        buttonCreateLocation.setOnClickListener(new OnClickListenerSignIn());
+
+
+//        final SignInDialog signInDialog = new SignInDialog(MainActivity.this);
+//        signInDialog.setTitle("회원가입");
+//
+//        // 회원가입 확인
+//        signInDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface arg0) {
+//
+//            }
+//        });
+//
+//        // 회원가입 취소
+//        signInDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface arg0) {
+//                //Toast toastCancel;
+//                //toastCancel = new Toast.makeText(getApplicationContext(), "회원가입을 취소했습니다.", Toast.LENGTH_SHORT);
+//                //toastCancel.setGravity(Gravity.CENTER, 0, 0);
+//                //toastCancel.show();
+//            }
+//        });
+//        // 회원가입 버튼 동작
+//        Button buttonCreateLocation = (Button) findViewById(R.id.requestBtn2);
+//        buttonCreateLocation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick (View arg0) {
+//                signInDialog.show();
+//            }
+//        });
     }
 
     class ConnectThread extends Thread {
@@ -151,6 +156,7 @@ public class MainActivity extends ActionBarActivity {
                 httpPost.setEntity(entityRequest);
                 // 전송 & 수신
                 HttpResponse response = client.execute(httpPost);
+                Log.i("test 보내는내용 : ", "["+input_id.getText() + "], [" + input_pwd.getText()+"]" );
 
                 // 응답 코드 확인
                 Log.i("test1", "로그인 HTTPCODE : " + response.getStatusLine().getStatusCode());
@@ -298,6 +304,7 @@ public class MainActivity extends ActionBarActivity {
             return response_result;
         }
     }
+
 
     public void changeActivity(){
         Intent intent = new Intent(this, SubActivity.class);

@@ -27,8 +27,16 @@ public class ListviewAdapter extends BaseAdapter {
     public int getCount(){return data.size();}
 
     @Override
-    public String getItem(int position){return data.get(position).getName();}
-
+    public Object getItem(int position) {
+        return data.get(position);
+    }
+/*
+    public String getmid(int position){return data.get(position).getmid();}
+    public String getbtitle(int position){return data.get(position).getbtitle();}
+    public String getrecommend(int position){return data.get(position).getrecommend();}
+    public String getbhits(int position){return data.get(position).getbhits();}
+    public String getbdate(int position){return data.get(position).getbdate();}
+    */
     @Override
     public long getItemId(int position){return position;}
 
@@ -40,11 +48,20 @@ public class ListviewAdapter extends BaseAdapter {
 
         ListViewItem listviewitem=data.get(position);
 
-        ImageView icon=(ImageView)convertView.findViewById(R.id.imageview);
-        icon.setImageResource(listviewitem.getIcon());
+        TextView mid = (TextView)convertView.findViewById(R.id.mid);
+        mid.setText(listviewitem.getmid());
 
-        TextView name=(TextView)convertView.findViewById(R.id.textview);
-        name.setText(listviewitem.getName());
+        TextView btitle = (TextView)convertView.findViewById(R.id.btitle);
+        btitle.setText(listviewitem.getbtitle());
+
+        TextView recommend = (TextView)convertView.findViewById(R.id.recommend);
+        recommend.setText(listviewitem.getrecommend());
+
+        TextView bhits = (TextView)convertView.findViewById(R.id.bhits);
+        bhits.setText(listviewitem.getbhits());
+
+        TextView bdate=(TextView)convertView.findViewById(R.id.bdate);
+        bdate.setText(listviewitem.getbdate());
 
         return convertView;
     }

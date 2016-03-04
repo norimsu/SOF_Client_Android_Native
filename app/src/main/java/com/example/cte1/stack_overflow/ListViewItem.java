@@ -5,20 +5,34 @@ package com.example.cte1.stack_overflow;
  */
 public class ListViewItem {
 
-    private int icon;
-    private String name;
+    private String mid;
+    private String btitle;
+    private String recommend;
+    private String bhits;
+    private String bdate;
 
-    public int getIcon(){
-        return icon;
+    public String getmid(){
+        return mid;
+    }
+    public String getbtitle(){
+        return btitle;
+    }
+    public String getrecommend(){
+        return recommend;
+    }
+    public String getbhits(){
+        return bhits;
+    }
+    public String getbdate(){
+        return bdate;
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public ListViewItem(int icon, String name){
-        this.icon = icon;
-        this.name = name;
+    public ListViewItem(String mid, String btitle, String recommend, String bhits, String bdate){
+        this.mid = mid;
+        this.btitle = btitle;
+        this.recommend = recommend;
+        this.bhits = bhits;
+        this.bdate = bdate;
     }
 
 }

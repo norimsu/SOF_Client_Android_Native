@@ -12,8 +12,8 @@
         android:id="@+id/listview"
         android:layout_height="405dp"
         android:layout_width="match_parent"
-        android:divider="#ffcc22"
-        android:dividerHeight="1.5dp"
+        android:divider="#B2EBF4"
+        android:dividerHeight="1.9dp"
         android:choiceMode="singleChoice" />
 
     <LinearLayout

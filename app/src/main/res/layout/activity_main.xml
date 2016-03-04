@@ -29,7 +29,7 @@
             android:hint="서버 주소"
             android:textSize="13dp"
             android:layout_marginTop="5dp"
-            android:text="@string/default_url"
+            android:text="http://10.131.158.30:8080/androidserver/member/login.do"
             android:singleLine="true">
         </EditText>
 
