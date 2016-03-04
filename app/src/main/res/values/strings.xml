@@ -26,8 +26,8 @@
     <string name="toast_xxxxx">알수없는 오류!!</string>
 
 
-    <string name="default_url">http://10.131.158.30:8080/androidserver/login.do</string>
-    <string name="member_url">http://10.131.158.30:8080/androidserver/login.do</string>
+    <string name="default_url">http://10.131.158.30:8080/androidserver/member/login.do</string>
+    <string name="member_url">http://10.131.158.30:8080/androidserver/member/join.do</string>
 
 
 
