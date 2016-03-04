@@ -1,21 +1,20 @@
 package com.example.cte1.stack_overflow;
 
 // 안드로이드 lib
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.os.Handler;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-// json lib
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -26,11 +25,10 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.json.JSONObject;
-// 통신 lib
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 
 public class MainActivity extends ActionBarActivity {
     // View Update용 Handler 객체 선언
@@ -63,46 +61,11 @@ public class MainActivity extends ActionBarActivity {
                 // 통신 thread start
                 ConnectThread thread = new ConnectThread(urlStr);
                 thread.start();
-
-                //toastLoading.cancel();
-
-                //Toast toastFail = Toast.makeText(getApplicationContext(), R.string.toast_fail, Toast.LENGTH_LONG);
-                //toastFail.setGravity(Gravity.CENTER, 0, 0);
-                //toastFail.show();
-
             }
         });
 
-
-        final SignInDialog signInDialog = new SignInDialog(MainActivity.this);
-        signInDialog.setTitle("회원가입");
-
-        // 회원가입 확인
-        signInDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface arg0) {
-
-            }
-        });
-
-        // 회원가입 취소
-        signInDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface arg0) {
-                //Toast toastCancel;
-                //toastCancel = new Toast.makeText(getApplicationContext(), "회원가입을 취소했습니다.", Toast.LENGTH_SHORT);
-                //toastCancel.setGravity(Gravity.CENTER, 0, 0);
-                //toastCancel.show();
-            }
-        });
-        // 회원가입 버튼 동작
         Button buttonCreateLocation = (Button) findViewById(R.id.requestBtn2);
-        buttonCreateLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View arg0) {
-                signInDialog.show();
-            }
-        });
+        buttonCreateLocation.setOnClickListener(new OnClickListenerSignIn());
     }
 
     class ConnectThread extends Thread {
@@ -151,6 +114,7 @@ public class MainActivity extends ActionBarActivity {
                 httpPost.setEntity(entityRequest);
                 // 전송 & 수신
                 HttpResponse response = client.execute(httpPost);
+                Log.i("test 보내는내용 : ", "["+input_id.getText() + "], [" + input_pwd.getText()+"]" );
 
                 // 응답 코드 확인
                 Log.i("test1", "로그인 HTTPCODE : " + response.getStatusLine().getStatusCode());
@@ -211,90 +175,11 @@ public class MainActivity extends ActionBarActivity {
 //                    toast4.setGravity(Gravity.CENTER,0,0);
 //                    toast4.show();
                 }
-                // 받는부분
-
-//                URL url = new URL(urlStr);
-//                Log.e("test000", urlStr);
-//                HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-//
-//
-//
-//                int responseCode = conn.getResponseCode(); // Server에 연결
-//                String codeString = "response code: " + responseCode;
-//                Log.e("test0000",codeString);
-//                // responseCode 가 200이면
-//                if(responseCode == HttpURLConnection.HTTP_OK)
-//                {
-//                    Log.e("test00000","test00000");
-//                    InputStream in = conn.getInputStream();
-//                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                    byte[] byteBuffer = new byte[1024];
-//                    byte[] byteData = null;
-//
-//                    int nLength = 0;
-//                    while((nLength = in.read(byteBuffer, 0, byteBuffer.length)) != -1){
-//                        baos.write(byteBuffer, 0, nLength);
-//                    }
-//                    byteData = baos.toByteArray();
-//
-//                    String response = new String(byteData);
-//                    Log.e("test3",response);
-//
-//
-//                    JSONObject responseJSON = new JSONObject(response);
-//                    Log.e("test4",responseJSON.toString());
-//
-//                    String result_case = (String)responseJSON.get("caseby");
-//                    String result = (String)responseJSON.get("status");
-//                    Log.e("test1", result_case);
-//                    Log.e("test2", result);
-//
-//                    // case :login
-//                    // status // success // disaccord
-//                    if(result_case.toString().equals("login"))
-//                    {
-//                        if(result.toString().equals("success")){
-//                            Toast toastLogin = Toast.makeText(getApplicationContext(), R.string.toast_login, Toast.LENGTH_LONG);
-//                            toastLogin.setGravity(Gravity.CENTER,0,0);
-//                            toastLogin.show();
-//                            // 중요 !! Activity 이동하는 부분!!
-//                            changeActivity();
-//                        }
-//                        else if(result.toString().equals("disaccord"))
-//                        {
-//                            //
-//                            Toast toast1 = Toast.makeText(getApplicationContext(), R.string.toast_disaccord, Toast.LENGTH_LONG);
-//                            toast1.setGravity(Gravity.CENTER, 0, 0);
-//                            toast1.show();
-//                        }
-//                        else
-//                        {
-//                            //
-//                            Toast toast2 = Toast.makeText(getApplicationContext(), R.string.toast_xxxxx, Toast.LENGTH_LONG);
-//                            toast2.setGravity(Gravity.CENTER,0,0);
-//                            toast2.show();
-//                        }
-//                    }
-//                    else
-//                    {
-//                        //
-//                        Toast toast3 = Toast.makeText(getApplicationContext(), R.string.toast_xxxxx, Toast.LENGTH_LONG);
-//                        toast3.setGravity(Gravity.CENTER,0,0);
-//                        toast3.show();
-//                    }
-//                }
-//                else {
-//                    Toast toast4 = Toast.makeText(getApplicationContext(),"받지 못함", Toast.LENGTH_LONG);
-//                    toast4.setGravity(Gravity.CENTER,0,0);
-//                    toast4.show();
-//                }
-
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.e("test", "로그인 예외 처리");
                 response_result = "Time Out";
             }
-
             return response_result;
         }
     }
@@ -317,7 +202,6 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

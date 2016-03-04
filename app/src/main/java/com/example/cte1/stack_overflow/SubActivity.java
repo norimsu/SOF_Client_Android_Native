@@ -11,10 +11,12 @@ import java.util.ArrayList;
 
 public class SubActivity extends ActionBarActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setTitle("게시판");
+
         setContentView(R.layout.activity_sub);
 
         ListView listView=(ListView)findViewById(R.id.listview); // 리스트뷰 객체 생성

@@ -9,7 +9,6 @@
     <string name="action_logout">로그아웃</string>
     <string name="action_refresh">새로고침</string>
 
-
     <string name="string_id">아이디</string>
     <string name="string_pwd">비밀번호</string>
     <string name="string_pwd2">비민번호 확인</string>
@@ -17,21 +16,14 @@
     <string name="string_name">이름</string>
     <string name="string_email">E-mail</string>
 
-
-
     <string name="toast_loading">접속하는 중입니다.</string>
     <string name="toast_fail">접속 오류!!</string>
     <string name="toast_login">로그인되었습니다.</string>
     <string name="toast_disaccord">아이디와 비밀번호를 확인해주세요.</string>
     <string name="toast_xxxxx">알수없는 오류!!</string>
 
-
     <string name="default_url">http://10.131.158.30:8080/androidserver/member/login.do</string>
     <string name="member_url">http://10.131.158.30:8080/androidserver/member/join.do</string>
 
-
-
     <string name="title_activity_sub">SubActivity</string>
-
-
 </resources>
