@@ -1,174 +1,167 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/formIdLine"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        >
-
+        android:weightSum="1"
+        android:id="@+id/linearLayout1"
+        android:gravity="center_vertical">
         <TextView
-            android:layout_width="75dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ID"
-            android:id="@+id/textViewId"
-            android:layout_alignBaseline="@+id/formTextId"
-            android:layout_alignRight="@+id/formTextId"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true"
-            android:autoText="false" />
-
+            android:layout_weight="0.68"
+            android:text="아이디"
+            android:textSize="13dp"
+            android:gravity="center"
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/formTextId"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_weight="0.6"
             android:hint="아이디"
-            android:singleLine="true" >
-
+            android:singleLine="true">
             <requestFocus />
         </EditText>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/formPwd1Line"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/formIdLine"
-        >
-
+        android:weightSum="1"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout1"
+        android:gravity="center_vertical">
         <TextView
-            android:layout_width="75dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewPwd1"
-            android:layout_alignBaseline="@+id/formTextId"
-            android:layout_alignRight="@+id/formTextId"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true"
-            android:text="패스워드" />
-
+            android:layout_weight="0.68"
+            android:text="비밀번호"
+            android:textSize="13dp"
+            android:gravity="center"
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/formTextPwd1"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:hint="패스워드"
+            android:layout_weight="0.3"
+            android:hint="비밀번호"
             android:singleLine="true"
             android:inputType="textPassword"/>
-
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/formPwd2Line"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/formPwd1Line"
-        >
-
+        android:weightSum="1"
+        android:id="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout2"
+        android:gravity="center_vertical">
         <TextView
-            android:layout_width="75dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="확인"
-            android:id="@+id/textViewPwd2"
-            android:layout_alignBaseline="@+id/formTextId"
-            android:layout_alignRight="@+id/formTextId"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true" />
-
+            android:layout_weight="0.68"
+            android:text="비밀번호 확인"
+            android:textSize="13dp"
+            android:gravity="center"
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/formTextPwd2"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:hint="패스워드 확인"
-            android:singleLine="true" />
-
+            android:layout_weight="0.3"
+            android:hint="비밀번호"
+            android:singleLine="true"
+            android:inputType="textPassword"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/formAddrLine"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/formPwd2Line"
-        >
-
+        android:weightSum="1"
+        android:id="@+id/linearLayout4"
+        android:layout_below="@+id/linearLayout3"
+        android:gravity="center_vertical">
         <TextView
-            android:layout_width="75dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Address"
-            android:id="@+id/textViewAddr"
-            android:layout_alignBaseline="@+id/formTextId"
-            android:layout_alignRight="@+id/formTextId"
-            android:textSize="18dp"
-            android:layout_alignParentStart="true" />
-
+            android:layout_weight="0.68"
+            android:text="주소"
+            android:textSize="13dp"
+            android:gravity="center"
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/formTextAddr"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_weight="0.3"
             android:hint="주소"
-            android:singleLine="true" />
-
+            android:singleLine="true"/>
     </LinearLayout>
 
-    <!--
-        <LinearLayout
-            android:id="@+id/formEmailLine"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:id="@+id/linearLayout5"
+        android:layout_below="@+id/linearLayout4"
+        android:gravity="center_vertical">
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/formAddrLine"
-            >
-
-            <TextView
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:text="E-Mail"
-                android:id="@+id/textViewEmail"
-                android:layout_alignBaseline="@+id/formTextEmail1"
-                android:layout_alignRight="@+id/formTextEmail1"
-                android:textSize="18dp"
-                android:layout_alignParentStart="true" />
-
-            <EditText
-                android:id="@+id/formTextEmail1"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:hint="Email"
-                android:singleLine="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$"
-                android:id="@+id/textViewAt"
-                android:textSize="18dp"
-                android:layout_alignParentStart="true" />
-
-            <EditText
-                android:id="@+id/formTextEmail2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:hint="Domain"
-                android:singleLine="true" />
-
-
+            android:id="@+id/addOk"
+            android:layout_weight="0.5"
+            android:text="확인"
+            android:textStyle="bold" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addCancel"
+            android:layout_weight="0.5"
+            android:text="취소"
+            android:textStyle="bold" />
     </LinearLayout>
-    -->
 
 
+
+    <!--<LinearLayout-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:weightSum="1"-->
+    <!--android:id="@+id/linearLayout5"-->
+    <!--android:layout_below="@+id/linearLayout4"-->
+    <!--android:gravity="center_vertical">-->
+    <!--<TextView-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight=".5"-->
+    <!--android:text="이메일 : "-->
+    <!--android:textSize="18dp" />-->
+    <!--<EditText-->
+    <!--android:id="@+id/formTextEmail1"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="0.8"-->
+    <!--android:singleLine="true"/>-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="\@"-->
+    <!--android:textSize="18dp" />-->
+    <!--<EditText-->
+    <!--android:id="@+id/formTextEmail2"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="0.3"-->
+    <!--android:singleLine="true"/>-->
+    <!--</LinearLayout>-->
 </RelativeLayout>
