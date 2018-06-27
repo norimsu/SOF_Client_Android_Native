@@ -26,7 +26,7 @@
             android:id="@+id/input_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="서버 주소 입력"
+            android:hint="서버 주소"
             android:textSize="13dp"
             android:layout_marginTop="5dp"
             android:text="@string/default_url"
@@ -37,19 +37,21 @@
             android:id="@+id/input_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="아이디 입력"
+            android:hint="아이디(ID)"
             android:textSize="18dp"
             android:layout_below="@+id/input_url"
             android:singleLine="true">
 
+            <!--포커스-->
             <requestFocus />
+
         </EditText>
 
         <EditText
             android:id="@+id/input_pwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호 입력"
+            android:hint="비밀번호(Password)"
             android:textSize="18dp"
             android:layout_below="@+id/input_id"
             android:singleLine="true"
@@ -87,6 +89,7 @@
 
         </LinearLayout>
 
+        <!--스크롤뷰 - 테스트 용도-->
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
